@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MY APP</title>
+<meta name="theme-color" content="#F49AC1">
+<meta name="robots" content="noindex">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="MY APP">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mali:wght@500;600;700&family=Sarabun:wght@400;500;600&display=swap">
+<style>
+/* MY APP: หน้าแรก = ปุ่มกลมๆ แยกกลุ่ม · กดแล้วเปิดในกรอบแอป (ปุ่ม 🏠 ลอยกลับหน้าแรก) · หลังบ้าน Google เปิดแท็บใหม่ */
+:root{
+  --bg:#FFF6F9; --card:#FFFFFF; --ink:#4A3445; --mute:#9A7F92; --line:#F6D7E4;
+  --pink:#FF7EB6; --pinkSoft:#FFDDEB; --lilac:#A98BFF; --lilacSoft:#ECE4FF; --mint:#3FD0A8; --mintSoft:#D7F7EC;
+  --peach:#FF9B54; --peachSoft:#FFE6D3; --sky:#4DB2FF; --skySoft:#DCEFFF; --hot:#C2417F; --shadow:0 6px 18px rgba(214,120,165,.16);
+  --fd:"Mali","Sarabun",system-ui,sans-serif; --fb:"Sarabun","Leelawadee UI",Tahoma,system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#2A1F2A; --card:#382A38; --ink:#FBEAF2; --mute:#CDB3C5; --line:#4D3747; --pinkSoft:#4A2D3E; --lilacSoft:#3A3352;
+  --mintSoft:#24413A; --peachSoft:#4A3328; --skySoft:#26384B; --hot:#F49AC1; --shadow:0 6px 18px rgba(0,0,0,.3); color-scheme:dark}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);font-size:15px;line-height:1.5}
+#home{background:radial-gradient(circle at 8% 0%,rgba(255,170,205,.45),transparent 40%),radial-gradient(circle at 100% 20%,rgba(190,170,255,.4),transparent 38%),radial-gradient(circle at 50% 100%,rgba(140,220,200,.35),transparent 45%),var(--bg)}
+header{background:linear-gradient(120deg,#FF9CC7,#C8A8FF 55%,#8FD3FF)!important;border:0!important;color:#fff;box-shadow:0 10px 26px rgba(214,110,170,.3)}
+header .sub{color:rgba(255,255,255,.92)!important}
+header h1{color:#fff;text-shadow:0 2px 0 rgba(150,60,110,.25)}
+.t{background:linear-gradient(160deg,var(--cs),var(--card) 75%)!important;border-color:var(--c)!important}
+.ic{background:var(--card)!important;box-shadow:0 3px 8px rgba(0,0,0,.08)}
+h2 .dot{width:14px;height:14px;box-shadow:0 0 0 4px var(--cs)}
+#home{height:100%;overflow:auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 40px max(16px,env(safe-area-inset-left))}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+header{background:linear-gradient(135deg,var(--pinkSoft),var(--lilacSoft));border:2px solid var(--line);border-radius:26px;padding:18px 20px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+header img{width:62px;height:62px;border-radius:16px;flex:0 0 auto}
+.hi{min-width:0;flex:1}
+h1{font-family:var(--fd);font-size:25px;margin:0;line-height:1.25}
+.sub{color:var(--mute);margin-top:2px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+#groups{display:flex;flex-direction:column;gap:22px;min-width:0}
+.wrap>*{min-width:0}
+.chip{color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:999px;padding:3px 11px;font-size:13px}
+.chip b{color:var(--hot)}
+.search{width:100%;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:11px 18px;font:inherit}
+.search:focus{outline:3px solid var(--lilac)}
+section{display:flex;flex-direction:column;gap:10px}
+h2{font-family:var(--fd);font-size:18px;margin:0;display:flex;align-items:center;gap:8px}
+h2 .dot{width:12px;height:12px;border-radius:50%;background:var(--c)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.t{display:flex;gap:12px;align-items:center;text-align:left;color:var(--ink);background:var(--card);border:2px solid var(--line);border-radius:20px;padding:13px 14px;box-shadow:var(--shadow);cursor:pointer;font:inherit;transition:transform .15s,border-color .15s;min-width:0;width:100%}
+.t:hover{transform:translateY(-2px);border-color:var(--c)}
+.t:focus-visible{outline:3px solid var(--c);outline-offset:2px}
+.ic{width:44px;height:44px;border-radius:15px;background:var(--cs);display:grid;place-items:center;font-size:22px;flex:0 0 auto}
+.tx{min-width:0}.tx b{display:block;font-family:var(--fd);font-weight:600;font-size:15.5px;line-height:1.3}
+.tx small{display:block;color:var(--mute);font-size:12.5px;line-height:1.35;margin-top:2px}
+.ext{margin-left:auto;color:var(--mute);font-size:13px}
+.g-ks{--c:var(--sky);--cs:var(--skySoft)}.g-db{--c:var(--lilac);--cs:var(--lilacSoft)}.g-ub{--c:var(--peach);--cs:var(--peachSoft)}
+.g-rp{--c:var(--mint);--cs:var(--mintSoft)}.g-tl{--c:var(--pink);--cs:var(--pinkSoft)}
+.recent{display:flex;gap:8px;flex-wrap:wrap}
+.recent button{font:inherit;font-size:13px;color:var(--ink);background:var(--card);border:1.5px dashed var(--pink);border-radius:999px;padding:4px 12px;cursor:pointer}
+.empty{color:var(--mute);font-size:13px}
+footer{color:var(--mute);font-size:12px;text-align:center}
+#view{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column}
+#view iframe{flex:1;border:0;width:100%;background:#fff}
+#bar{display:flex;align-items:center;gap:8px;padding:calc(6px + env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) 6px max(10px,env(safe-area-inset-left));background:linear-gradient(90deg,var(--pinkSoft),var(--lilacSoft));border-bottom:2px solid var(--line)}
+#bar button{font:inherit;font-family:var(--fd);font-weight:600;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 14px;cursor:pointer}
+#bar .nm{font-family:var(--fd);font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+#load{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--bg);font-family:var(--fd);font-size:17px;transition:opacity .25s}
+#load img{width:84px;height:84px;border-radius:22px;animation:bl 1.1s infinite}
+@keyframes bl{50%{transform:scale(.92);opacity:.6}}
+#dlg{position:fixed;inset:0;background:rgba(74,52,69,.45);display:flex;align-items:center;justify-content:center;padding:16px}
+#dlg .box{background:var(--card);border-radius:22px;padding:18px;max-width:420px;width:100%;display:flex;flex-direction:column;gap:10px;border:2px solid var(--line)}
+#dlg input{width:100%;min-width:0;font:inherit;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink)}
+#dlg .row{display:flex;gap:8px;justify-content:flex-end}
+#dlg button{font:inherit;font-family:var(--fd);border-radius:999px;padding:7px 16px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+#dlg button.ok{background:var(--pink);border-color:var(--pink);color:#fff}
+@media (prefers-reduced-motion:reduce){.t{transition:none}.t:hover{transform:none}#load img{animation:none}}
+</style>
+</head>
+<body>
+<div id="home">
+ <div class="wrap">
+  <header>
+   <img src="icon-192.png" alt="">
+   <div class="hi">
+    <h1 id="greet">สวัสดีค่ะพี่ฝน ✿</h1>
+    <div class="sub"><b style="font-family:var(--fd);letter-spacing:.06em">MY APP</b> · ทุกระบบ KS-ONE รวมไว้ที่เดียว</div>
+    <div class="chips">
+     <span class="chip">KS-ONE <b>v5.19s</b> · เหลือ deploy <b>7</b>/200</span>
+     <span class="chip">ใบส้ม <b>v2.15</b></span>
+     <span class="chip">Dashboard <b>v1.21</b></span>
+    </div>
+   </div>
+  </header>
+  <input id="q" class="search" type="search" placeholder="🔍 พิมพ์หา เช่น สต็อก · บัญชี · KOSIE · ช่าง" aria-label="ค้นหาปุ่ม">
+  <section>
+   <h2><span class="dot" style="--c:var(--pink)"></span>เปิดล่าสุด</h2>
+   <div class="recent" id="recent"><span class="empty">ยังไม่มี · กดปุ่มไหนแล้วจะมาโผล่ตรงนี้ค่ะ</span></div>
+  </section>
+  <div id="groups"></div>
+  <footer>MY APP v1.2 · 26 ต.ค. 69 · Developed by fonkosin</footer>
+ </div>
+</div>
+<div id="view" hidden>
+ <div id="bar"><button id="homeBtn">🏠 หน้าแรก</button><span class="nm" id="vname"></span><button id="extBtn" title="เปิดในแท็บใหม่">↗</button></div>
+ <iframe id="frame" title="หน้าระบบ" allow="camera; clipboard-write" src="about:blank"></iframe>
+</div>
+<div id="load" hidden><img src="icon-192.png" alt=""><div id="ltxt">กำลังเปิด…</div></div>
+<div id="dlg" hidden><div class="box">
+ <b style="font-family:var(--fd);font-size:17px">🔑 วางลิงก์ KOSIE ครั้งแรก</b>
+ <div style="color:var(--mute);font-size:13px">ลิงก์นี้มีรหัส เลยไม่ใส่ไว้ในแอป · วางครั้งเดียว เครื่องนี้จะจำไว้ให้ค่ะ</div>
+ <input id="kin" placeholder="https://script.google.com/macros/s/…/exec?p=kosie&k=…">
+ <div class="row"><button id="kno">ยกเลิก</button><button id="kok" class="ok">บันทึก</button></div>
+</div></div>
+<script>
+var KS="https://script.google.com/macros/s/AKfycbwCwW-_G50IztCQuFWxIQpjlXtUYN1cPLDoKmsbkIG5FKfxrdTFBDW2bZoKw2DJj9bk/exec";
+var UB="https://script.google.com/macros/s/AKfycbxbfhl3pXAAhFNm84Vl7BHFxVgyozOp0ClxUXuaW05SWAvigiTuNxTf9pC_lS_tV4IK-A/exec";
+var DS="https://script.google.com/macros/s/AKfycbzjBSyH0uJaHYLo1DPFiwdUbH4lpSiGpOel1qoreRbsXdnAehKUQt4_oH_nrFWaZcTaUQ/exec";
+/* [ไอคอน, ชื่อ, คำอธิบาย, ลิงก์, แบบ] แบบ: '' = เปิดในแอป · 'x' = แท็บใหม่ (หน้า Google) · 'kosie' = ลิงก์ที่จำในเครื่อง */
+var G=[
+ {k:"g-ks",t:"KS-ONE ระบบสั่งของ",items:[
+  ["🏠","เมนู KS-ONE","เขียนใบสั่ง · เช็คราคา · ส่วนลด · โปรฯ",KS+"?menu=1",""],
+  ["✅","ตรวจ / อนุมัติใบสั่ง","หน้าแอดมิน ปุ่ม ✅ ⛔ 📎 🚫",KS+"?admin=1",""]]},
+ {k:"g-db",t:"Dashboard",items:[
+  ["📦","สต็อก","รับงาน · ส่งของ · ของแถม/เปลี่ยนของ",DS+"?p=stock",""],
+  ["🧾","RA","อย. · สั่งด่วน อย.ใกล้หมด",DS+"?p=ra",""],
+  ["🛡️","แอดมิน Dashboard","โจทย์แอดมิน · ภาพรวมทุกเซล",DS+"?p=admin",""]]},
+ {k:"g-ub",t:"ใบส้ม",items:[
+  ["💰","บัญชีใบส้ม","ตรวจ · ยกเลิก · งานประชุม",UB+"?p=acct",""],
+  ["🏢","ใบส้มออฟฟิศ","เขียนใบส้มพนักงานออฟฟิศ",UB+"?p=office",""],
+  ["📊","KOSIE","อนุมัติใบส้ม · รายงานผู้บริหาร","","kosie"]]},
+ {k:"g-rp",t:"รายงานช่าง + เซล",items:[
+  ["🔧","Dashboard ENDO","รายงานช่าง · คะแนน · ค่าจุด","https://kosin-ksone.github.io/tech/dashboard.html",""],
+  ["📝","Dashboard เซล","รายงานผู้แทน · ส่งตามสัปดาห์","https://kosin-ksone.github.io/sales/dashboard.html",""],
+  ["🧰","แอปช่าง","หน้าเขียนรายงานช่าง","https://kosin-ksone.github.io/tech/",""],
+  ["🗒️","แอปเซล","หน้าเขียนรายงานเซล","https://kosin-ksone.github.io/sales/",""]]},
+ {k:"g-tl",t:"หลังบ้าน (เปิดแท็บใหม่)",items:[
+  ["⚙️","Apps Script ทั้งหมด","1 ระบบสั่งของ · 2 ใบส้ม · 3 Dashboard","https://script.google.com/home/my","x"],
+  ["📁","Drive KS-ONE","โฟลเดอร์ KS-ONE ระบบสั่งของ","https://drive.google.com/drive/folders/1JegR5jY598Wj_MLCLolb38yiwVY-EjOa","x"],
+  ["📒","ข้อมูลหลังบ้าน","ชีตของเราคนเดียว","https://docs.google.com/spreadsheets/d/1pQlXS1RzX7qrlBWj0oVLwYQafKFaNQT3QhFYTzU5C_I/edit","x"]]}
+];
+var $=function(i){return document.getElementById(i);};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function ls(k,v){try{if(v===undefined)return localStorage.getItem(k)||"";localStorage.setItem(k,v);}catch(e){return "";}}
+var ALL=[];G.forEach(function(g){g.items.forEach(function(it){ALL.push(it);});});
+function draw(q){q=(q||"").trim().toLowerCase();var h="";
+ G.forEach(function(g){var L=g.items.filter(function(it){return !q||(g.t+" "+it[1]+" "+it[2]).toLowerCase().indexOf(q)>=0;});if(!L.length)return;
+  h+='<section class="'+g.k+'"><h2><span class="dot"></span>'+esc(g.t)+'</h2><div class="grid">'+L.map(function(it){
+   return '<button class="t" data-n="'+esc(it[1])+'"><span class="ic" aria-hidden="true">'+it[0]+'</span><span class="tx"><b>'+esc(it[1])+'</b><small>'+esc(it[2])+'</small></span>'+(it[4]==="x"?'<span class="ext">↗</span>':'')+'</button>';}).join("")+'</div></section>';});
+ $("groups").innerHTML=h||'<div class="empty" style="text-align:center">ไม่เจอปุ่มที่ค้นหา ลองคำอื่นดูน้า</div>';}
+function recent(){var R=[];try{R=JSON.parse(ls("my_recent")||"[]");}catch(e){}return R;}
+function drawRecent(){var R=recent();if(!R.length)return;$("recent").innerHTML=R.map(function(n){return '<button data-n="'+esc(n)+'">'+esc(n)+'</button>';}).join("");}
+function remember(n){var R=recent().filter(function(x){return x!==n;});R.unshift(n);ls("my_recent",JSON.stringify(R.slice(0,5)));drawRecent();}
+function withApp(u){return /^https:\/\/script\.google\.com\/macros\//.test(u)&&!/[?&]app=1/.test(u)?u+(u.indexOf("?")>=0?"&":"?")+"app=1":u;}
+var cur="";
+function openIn(name,url){cur=url;$("vname").textContent=name;$("ltxt").textContent="กำลังเปิด "+name+"…";
+ $("load").hidden=false;$("load").style.opacity="1";$("view").hidden=false;$("home").hidden=true;$("frame").src=withApp(url);}
+$("frame").addEventListener("load",function(){if($("frame").src==="about:blank")return;$("load").style.opacity="0";setTimeout(function(){$("load").hidden=true;},250);});
+function goHome(){$("view").hidden=true;$("home").hidden=false;$("load").hidden=true;$("frame").src="about:blank";}
+$("homeBtn").onclick=goHome;
+$("extBtn").onclick=function(){if(cur)window.open(cur,"_blank","noopener");};
+function tap(n){var it=ALL.filter(function(x){return x[1]===n;})[0];if(!it)return;remember(n);
+ if(it[4]==="x"){window.open(it[3],"_blank","noopener");return;}
+ if(it[4]==="kosie"){var u=ls("my_kosie");if(!u){$("kin").value="";$("dlg").hidden=false;setTimeout(function(){$("kin").focus();},50);return;}openIn(n,u);return;}
+ openIn(n,it[3]);}
+document.addEventListener("click",function(e){var b=e.target.closest("[data-n]");if(b)tap(b.dataset.n);});
+$("kno").onclick=function(){$("dlg").hidden=true;};
+$("kok").onclick=function(){var u=$("kin").value.trim();if(!/^https:\/\/script\.google\.com\/macros\/s\/.+p=kosie/.test(u)){$("kin").style.borderColor="#E5484D";return;}ls("my_kosie",u);$("dlg").hidden=true;openIn("KOSIE",u);};
+/* หน้าในกรอบสั่งเปลี่ยนหน้า (ลิงก์ target=_top) → เปิดต่อในกรอบ · ถ้าเป็นเมนู KS-ONE ให้กลับหน้าแรกของแอปนี้ */
+window.addEventListener("message",function(ev){var d=ev.data;if(!d||d.ksone!=="nav"||typeof d.url!=="string")return;
+ if(!/^https:\/\/script\.google\.com\//.test(d.url))return;
+ if(/[?&]menu=1/.test(d.url)&&cur.indexOf("menu=1")<0){goHome();return;}
+ openIn($("vname").textContent,d.url);});
+/* ลิงก์ตั้งค่าครั้งเดียว: …/my/#kosie=<รหัส> → จำลิงก์ KOSIE ในเครื่อง แล้วลบออกจากแถบที่อยู่ (รหัสไม่อยู่ในโค้ด) */
+(function(){var m=/^#kosie=([0-9a-f]{16,64})$/.exec(location.hash||"");if(!m)return;ls("my_kosie",UB+"?p=kosie&k="+m[1]);try{history.replaceState(null,"",location.pathname);}catch(e){location.hash="";}})();
+$("q").addEventListener("input",function(){draw(this.value);});
+(function(){var h=new Date().getHours();$("greet").textContent=h<12?"อรุณสวัสดิ์ค่ะพี่ฝน ☀︎":h<17?"สวัสดีตอนบ่ายค่ะพี่ฝน ✿":"เย็นแล้วน้าพี่ฝน ☾";})();
+draw("");drawRecent();
+</script>
+</body>
+</html>
