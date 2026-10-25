@@ -61,7 +61,7 @@ h2 .dot{width:12px;height:12px;border-radius:50%;background:var(--c)}
 .tx small{display:block;color:var(--mute);font-size:12.5px;line-height:1.35;margin-top:2px}
 .ext{margin-left:auto;color:var(--mute);font-size:13px}
 .g-ks{--c:var(--sky);--cs:var(--skySoft)}.g-db{--c:var(--lilac);--cs:var(--lilacSoft)}.g-ub{--c:var(--peach);--cs:var(--peachSoft)}
-.g-rp{--c:var(--mint);--cs:var(--mintSoft)}.g-tl{--c:var(--pink);--cs:var(--pinkSoft)}
+.g-rp{--c:var(--mint);--cs:var(--mintSoft)}.g-ifu{--c:#E8B10C;--cs:#FFF4CC}.g-tl{--c:var(--pink);--cs:var(--pinkSoft)}
 .recent{display:flex;gap:8px;flex-wrap:wrap}
 .recent button{font:inherit;font-size:13px;color:var(--ink);background:var(--card);border:1.5px dashed var(--pink);border-radius:999px;padding:4px 12px;cursor:pointer}
 .empty{color:var(--mute);font-size:13px}
@@ -104,7 +104,7 @@ footer{color:var(--mute);font-size:12px;text-align:center}
    <div class="recent" id="recent"><span class="empty">ยังไม่มี · กดปุ่มไหนแล้วจะมาโผล่ตรงนี้ค่ะ</span></div>
   </section>
   <div id="groups"></div>
-  <footer>MY APP v1.3 · 26 ต.ค. 69 · Developed by fonkosin</footer>
+  <footer>MY APP v1.4 · 26 ต.ค. 69 · Developed by fonkosin</footer>
  </div>
 </div>
 <div id="view" hidden>
@@ -142,6 +142,25 @@ var G=[
   ["🗒️","แอปเซล","หน้าเขียนรายงานเซล","https://kosin-ksone.github.io/sales/",""],
   ["🌱","แอปช่าง · น้องทดลองงาน","รายงานช่าง ENDO (ทดลองงาน)","https://kosin-ksone.github.io/tech-trial/",""],
   ["🌷","แอปเซล · น้องทดลองงาน","รายงานผู้แทน (ทดลองงาน)","https://kosin-ksone.github.io/sales-trial/",""]]},
+ {k:"g-ifu",t:"IFU · คู่มือการใช้ + ลงแอป (PDF ส่งต่อได้)",items:[
+  ["📚","สารบัญ + QR ทุกแอป","เล่ม 00 · ลิงก์ + QR ทุกระบบ","ifu/00-index.pdf","x"],
+  ["📲","ติดตั้งแอป (รวม)","เล่ม 01 · Samsung · iPhone · Windows · Mac","ifu/01-install-all.pdf","x"],
+  ["🧑‍💼","ผู้แทน · วิธีใช้ KS-ONE","เล่ม 02 · ใบสั่ง · ใบส้ม · งานของฉัน","ifu/02-use.pdf","x"],
+  ["🧑‍💼","ผู้แทน · ลงแอป KS-ONE","เล่ม 02","ifu/02-install.pdf","x"],
+  ["🏢","ออฟฟิศ · วิธีใช้ ใบส้ม","เล่ม 03","ifu/03-use.pdf","x"],
+  ["🏢","ออฟฟิศ · ลงแอป ใบส้ม","เล่ม 03","ifu/03-install.pdf","x"],
+  ["💰","บัญชี · วิธีใช้ ใบส้ม","เล่ม 04","ifu/04-use.pdf","x"],
+  ["💰","บัญชี · ลงแอป","เล่ม 04","ifu/04-install.pdf","x"],
+  ["📦","สต็อก · วิธีใช้","เล่ม 05","ifu/05-use.pdf","x"],
+  ["📦","สต็อก · ลงแอป","เล่ม 05","ifu/05-install.pdf","x"],
+  ["🧾","RA · วิธีใช้","เล่ม 06","ifu/06-use.pdf","x"],
+  ["🧾","RA · ลงแอป","เล่ม 06","ifu/06-install.pdf","x"],
+  ["🛡️","แอดมิน · วิธีใช้ ตรวจอนุมัติ","เล่ม 07","ifu/07-use.pdf","x"],
+  ["🛡️","แอดมิน · ลงแอป","เล่ม 07","ifu/07-install.pdf","x"],
+  ["📝","รายงานผู้แทน · วิธีใช้","เล่ม 09","ifu/09-use.pdf","x"],
+  ["📝","รายงานผู้แทน · ลงแอป","เล่ม 09","ifu/09-install.pdf","x"],
+  ["🔧","รายงานช่าง · วิธีใช้","เล่ม 10","ifu/10-use.pdf","x"],
+  ["🔧","รายงานช่าง · ลงแอป","เล่ม 10","ifu/10-install.pdf","x"]]},
  {k:"g-tl",t:"หลังบ้าน (เปิดแท็บใหม่)",items:[
   ["⚙️","Apps Script ทั้งหมด","1 ระบบสั่งของ · 2 ใบส้ม · 3 Dashboard","https://script.google.com/home/my","x"],
   ["📁","Drive KS-ONE","โฟลเดอร์ KS-ONE ระบบสั่งของ","https://drive.google.com/drive/folders/1JegR5jY598Wj_MLCLolb38yiwVY-EjOa","x"],
