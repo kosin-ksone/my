@@ -92,9 +92,9 @@ footer{color:var(--mute);font-size:12px;text-align:center}
     <h1 id="greet">สวัสดีค่ะพี่ฝน ✿</h1>
     <div class="sub"><b style="font-family:var(--fd);letter-spacing:.06em">MY APP</b> · ทุกระบบ KS-ONE รวมไว้ที่เดียว</div>
     <div class="chips">
-     <span class="chip">KS-ONE <b>v5.19s</b> · เหลือ deploy <b>7</b>/200</span>
-     <span class="chip">ใบส้ม <b>v2.15</b></span>
-     <span class="chip">Dashboard <b>v1.21</b></span>
+     <span class="chip">KS-ONE <b>v5.19v</b> · เหลือ deploy <b>4</b>/200</span>
+     <span class="chip">ใบส้ม <b>v2.19b</b></span>
+     <span class="chip">Dashboard <b>v1.25</b></span>
     </div>
    </div>
   </header>
@@ -116,6 +116,7 @@ footer{color:var(--mute);font-size:12px;text-align:center}
  <b style="font-family:var(--fd);font-size:17px">🔑 วางลิงก์ KOSIE ครั้งแรก</b>
  <div style="color:var(--mute);font-size:13px">ลิงก์นี้มีรหัส เลยไม่ใส่ไว้ในแอป · วางครั้งเดียว เครื่องนี้จะจำไว้ให้ค่ะ</div>
  <input id="kin" placeholder="https://script.google.com/macros/s/…/exec?p=kosie&k=…">
+ <div style="font-size:12px;color:var(--mute);margin-top:6px">หรือเปิด MY APP ผ่านลิงก์ตั้งค่า …/my/#kosie=รหัส ที่พี่ฝนส่งให้ ระบบจะจำให้เอง</div>
  <div class="row"><button id="kno">ยกเลิก</button><button id="kok" class="ok">บันทึก</button></div>
 </div></div>
 <script>
@@ -134,7 +135,8 @@ var G=[
  {k:"g-ub",t:"ใบส้ม",items:[
   ["💰","บัญชีใบส้ม","ตรวจ · ยกเลิก · งานประชุม",UB+"?p=acct",""],
   ["🏢","ใบส้มออฟฟิศ","เขียนใบส้มพนักงานออฟฟิศ",UB+"?p=office",""],
-  ["📊","KOSIE","อนุมัติใบส้ม · รายงานผู้บริหาร","","kosie"]]},
+  ["📊","KOSIE","อนุมัติใบส้ม · อนุมัติส่วนลด · รายงานผู้บริหาร","","kosie"],
+  ["🅺","KOPASS","แอปผู้บริหาร KOSIE (ติดตั้งได้)","https://kosin-ksone.github.io/kopass/","x"]]},
  {k:"g-rp",t:"รายงานช่าง + เซล",items:[
   ["🔧","Dashboard ENDO","รายงานช่าง · คะแนน · ค่าจุด","https://kosin-ksone.github.io/tech/dashboard.html",""],
   ["📝","Dashboard เซล","รายงานผู้แทน · ส่งตามสัปดาห์","https://kosin-ksone.github.io/sales/dashboard.html",""],
