@@ -92,9 +92,10 @@ footer{color:var(--mute);font-size:12px;text-align:center}
     <h1 id="greet">สวัสดีค่ะพี่ฝน ✿</h1>
     <div class="sub"><b style="font-family:var(--fd);letter-spacing:.06em">MY APP</b> · ทุกระบบ KS-ONE รวมไว้ที่เดียว</div>
     <div class="chips">
-     <span class="chip">KS-ONE <b>v5.19v</b> · เหลือ deploy <b>4</b>/200</span>
-     <span class="chip">ใบส้ม <b>v2.19b</b></span>
+     <span class="chip">KS-ONE <b>v5.19w</b> · เหลือ deploy <b>3</b>/200</span>
+     <span class="chip">ใบส้ม <b>v2.21</b></span>
      <span class="chip">Dashboard <b>v1.25</b></span>
+     <span class="chip" id="mlq" title="โควตาอีเมลวันนี้ (KS-ONE + ใบส้ม · 100/วัน · เหลือต่ำกว่า 20 งดอีเมลเรื่องปกติ)">✉️ อีเมลวันนี้ <b>…</b></span>
     </div>
    </div>
   </header>
@@ -204,6 +205,8 @@ window.addEventListener("message",function(ev){var d=ev.data;if(!d||d.ksone!=="n
 $("q").addEventListener("input",function(){draw(this.value);});
 (function(){var h=new Date().getHours();$("greet").textContent=h<12?"อรุณสวัสดิ์ค่ะพี่ฝน ☀︎":h<17?"สวัสดีตอนบ่ายค่ะพี่ฝน ✿":"เย็นแล้วน้าพี่ฝน ☾";})();
 draw("");drawRecent();
+/* v2.21: โควตาอีเมลวันนี้ (อ่านจากใบส้ม ?p=mailq · ตัวเลขอย่างเดียว) */
+(function(){var el=document.getElementById("mlq");if(!el)return;fetch("https://script.google.com/macros/s/AKfycbxbfhl3pXAAhFNm84Vl7BHFxVgyozOp0ClxUXuaW05SWAvigiTuNxTf9pC_lS_tV4IK-A/exec?p=mailq").then(function(r){return r.json();}).then(function(j){if(!j||j.left==null||j.left<0)throw 0;el.innerHTML="✉️ อีเมลวันนี้เหลือ <b>"+j.left+"</b>/100"+(j.left<20?" · งดเรื่องปกติ":"");if(j.left<20)el.style.borderColor="#DC2626";}).catch(function(){el.innerHTML="✉️ อีเมลวันนี้ <b>-</b>";});})();
 </script>
 </body>
 </html>
