@@ -92,10 +92,11 @@ footer{color:var(--mute);font-size:12px;text-align:center}
     <h1 id="greet">สวัสดีค่ะพี่ฝน ✿</h1>
     <div class="sub"><b style="font-family:var(--fd);letter-spacing:.06em">MY APP</b> · ทุกระบบ KS-ONE รวมไว้ที่เดียว</div>
     <div class="chips">
-     <span class="chip">KS-ONE <b>v5.20</b> · รุ่น 4 · เหลือ deploy <b>196</b>/200</span>
+     <span class="chip">KS-ONE <b>v5.21</b> · รุ่น 4 · เหลือ deploy <b>195</b>/200</span>
      <span class="chip">ใบส้ม <b>v2.23</b></span>
      <span class="chip">Dashboard <b>v1.25</b></span>
      <span class="chip" id="mlq" title="โควตาอีเมลวันนี้ (KS-ONE + ใบส้ม · 100/วัน · เหลือต่ำกว่า 20 งดอีเมลเรื่องปกติ)">✉️ อีเมลวันนี้ <b>…</b></span>
+     <span class="chip" id="lnq" title="LINE push ที่บอท KS-ONE ส่งเดือนนี้ (โควตาฟรี 300 ข้อความ/เดือน · อัปเดตทุก 30 นาที)">💬 LINE push เดือนนี้ <b>…</b></span>
     </div>
    </div>
   </header>
@@ -207,6 +208,8 @@ $("q").addEventListener("input",function(){draw(this.value);});
 draw("");drawRecent();
 /* v2.21: โควตาอีเมลวันนี้ (อ่านจากใบส้ม ?p=mailq · ตัวเลขอย่างเดียว) */
 (function(){var el=document.getElementById("mlq");if(!el)return;fetch("https://script.google.com/macros/s/AKfycbxbfhl3pXAAhFNm84Vl7BHFxVgyozOp0ClxUXuaW05SWAvigiTuNxTf9pC_lS_tV4IK-A/exec?p=mailq").then(function(r){return r.json();}).then(function(j){if(!j||j.left==null||j.left<0)throw 0;el.innerHTML="✉️ อีเมลวันนี้เหลือ <b>"+j.left+"</b>/100"+(j.left<20?" · งดเรื่องปกติ":"");if(j.left<20)el.style.borderColor="#DC2626";}).catch(function(){el.innerHTML="✉️ อีเมลวันนี้ <b>-</b>";});})();
+/* v5.21: โควตา LINE push เดือนนี้ (อ่านจาก KS-ONE ?p=lineq · ตัวเลขอย่างเดียว) */
+(function(){var el=document.getElementById("lnq");if(!el)return;fetch(KS+"?p=lineq").then(function(r){return r.json();}).then(function(j){if(!j||j.used==null||j.error)throw 0;var L=j.limit||300,left=L-j.used;el.innerHTML="💬 LINE push เดือนนี้ <b>"+j.used+"</b>/"+L+(left<30?" · ใกล้เต็ม":"");if(left<30)el.style.borderColor="#DC2626";}).catch(function(){el.innerHTML="💬 LINE push <b>-</b>";});})();
 </script>
 </body>
 </html>
