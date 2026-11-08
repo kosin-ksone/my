@@ -92,7 +92,7 @@ footer{color:var(--mute);font-size:12px;text-align:center}
     <h1 id="greet">สวัสดีค่ะพี่ฝน ✿</h1>
     <div class="sub"><b style="font-family:var(--fd);letter-spacing:.06em">MY APP</b> · ทุกระบบ KS-ONE รวมไว้ที่เดียว</div>
     <div class="chips">
-     <span class="chip">KS-ONE <b>v5.23u</b> · รุ่น 4 · เหลือ deploy <b>143</b>/200</span>
+     <span class="chip">KS-ONE <b>v5.23w</b> · รุ่น 4 · เหลือ deploy <b>142</b>/200</span>
      <span class="chip">ใบส้ม <b>v2.61</b></span>
      <span class="chip">Dashboard <b>v1.44</b></span>
      <span class="chip" id="mlq" title="โควตาอีเมลวันนี้ (KS-ONE + ใบส้ม · 100/วัน · เหลือต่ำกว่า 20 งดอีเมลเรื่องปกติ)">✉️ อีเมลวันนี้ <b>…</b></span>
@@ -127,12 +127,14 @@ var UB="https://script.google.com/macros/s/AKfycbxbfhl3pXAAhFNm84Vl7BHFxVgyozOp0
 var DS="https://script.google.com/macros/s/AKfycbzjBSyH0uJaHYLo1DPFiwdUbH4lpSiGpOel1qoreRbsXdnAehKUQt4_oH_nrFWaZcTaUQ/exec";
 /* [ไอคอน, ชื่อ, คำอธิบาย, ลิงก์, แบบ] แบบ: '' = เปิดในแอป · 'x' = แท็บใหม่ (หน้า Google) · 'kosie' / 'rab' = ลิงก์มีรหัส จำในเครื่อง (ไม่อยู่ในโค้ด) */
 var SEC={kosie:{ls:"my_kosie",re:/^https:\/\/script\.google\.com\/macros\/s\/.+p=kosie/,t:"🔑 วางลิงก์ KOSIE ครั้งแรก",ph:"https://script.google.com/macros/s/…/exec?p=kosie&k=…",hh:"หรือเปิด MY APP ผ่านลิงก์ตั้งค่า …/my/#kosie=รหัส ระบบจะจำให้เอง"},
- rab:{ls:"my_rab",re:/^https:\/\/script\.google\.com\/macros\/s\/.+p=unit/,t:"🔑 วางลิงก์ รับงานใบส้ม ครั้งแรก",ph:"https://script.google.com/macros/s/…/exec?p=unit&u=MIX&k=…",hh:"ใช้ลิงก์ \"รวมทุกหน่วย\" ในไฟล์ ลิงก์รับงานใบส้ม รายหน่วย (ลับ) · หรือเปิด MY APP ผ่านลิงก์ตั้งค่า …/my/#rab=รหัส"}};
+ rab:{ls:"my_rab",re:/^https:\/\/script\.google\.com\/macros\/s\/.+p=unit/,t:"🔑 วางลิงก์ รับงานใบส้ม ครั้งแรก",ph:"https://script.google.com/macros/s/…/exec?p=unit&u=MIX&k=…",hh:"ใช้ลิงก์ \"รวมทุกหน่วย\" ในไฟล์ ลิงก์รับงานใบส้ม รายหน่วย (ลับ) · หรือเปิด MY APP ผ่านลิงก์ตั้งค่า …/my/#rab=รหัส"},
+ dup:{ls:"my_dup",re:/^https:\/\/script\.google\.com\/macros\/s\/.+p=dupscan/,t:"🔑 วางลิงก์ ใบ PO ซ้ำ ครั้งแรก",ph:"https://script.google.com/macros/s/…/exec?p=dupscan&dk=…",hh:"ใช้ลิงก์ในไฟล์ ลิงก์รับงานใบส้ม รายหน่วย (ลับ) · หรือเปิด MY APP ผ่านลิงก์ตั้งค่า …/my/#dup=รหัส"}};
 var SECNOW="kosie";
 var G=[
  {k:"g-ks",t:"KS-ONE ระบบสั่งของ",items:[
   ["🏠","เมนู KS-ONE","เขียนใบสั่ง · เช็คราคา · ส่วนลด · โปรฯ",KS+"?menu=1",""],
-  ["✅","ตรวจ / อนุมัติใบสั่ง","หน้าแอดมิน ปุ่ม ✅ ⛔ 📎 🚫",KS+"?admin=1",""]]},
+  ["✅","ตรวจ / อนุมัติใบสั่ง","หน้าแอดมิน ปุ่ม ✅ ⛔ 📎 🚫",KS+"?admin=1",""],
+  ["🔎","ใบ PO ซ้ำ","ดูก่อนสรุปยอดรายเดือน · เดือนนี้ / เดือนที่แล้ว","","dup"]]},
  {k:"g-db",t:"Dashboard",items:[
   ["📦","สต็อก","รับงาน · ส่งของ · ของแถม/เปลี่ยนของ",DS+"?p=stock",""],
   ["🧾","RA","อย. · สั่งด่วน อย.ใกล้หมด",DS+"?p=ra",""],
@@ -199,14 +201,14 @@ function tap(n){var it=ALL.filter(function(x){return x[1]===n;})[0];if(!it)retur
  openIn(n,it[3]);}
 document.addEventListener("click",function(e){var b=e.target.closest("[data-n]");if(b)tap(b.dataset.n);});
 $("kno").onclick=function(){$("dlg").hidden=true;};
-$("kok").onclick=function(){var S=SEC[SECNOW],u=$("kin").value.trim();if(!S.re.test(u)){$("kin").style.borderColor="#E5484D";return;}ls(S.ls,u);$("dlg").hidden=true;openIn(SECNOW==="rab"?"รับงานใบส้ม":"KOSIE",u);};
+$("kok").onclick=function(){var S=SEC[SECNOW],u=$("kin").value.trim();if(!S.re.test(u)){$("kin").style.borderColor="#E5484D";return;}ls(S.ls,u);$("dlg").hidden=true;openIn(SECNOW==="rab"?"รับงานใบส้ม":(SECNOW==="dup"?"ใบ PO ซ้ำ":"KOSIE"),u);};
 /* หน้าในกรอบสั่งเปลี่ยนหน้า (ลิงก์ target=_top) → เปิดต่อในกรอบ · ถ้าเป็นเมนู KS-ONE ให้กลับหน้าแรกของแอปนี้ */
 window.addEventListener("message",function(ev){var d=ev.data;if(!d||d.ksone!=="nav"||typeof d.url!=="string")return;
  if(!/^https:\/\/script\.google\.com\//.test(d.url))return;
  if(/[?&]menu=1/.test(d.url)&&cur.indexOf("menu=1")<0){goHome();return;}
  openIn($("vname").textContent,d.url);});
 /* ลิงก์ตั้งค่าครั้งเดียว: …/my/#kosie=<รหัส> → จำลิงก์ KOSIE ในเครื่อง แล้วลบออกจากแถบที่อยู่ (รหัสไม่อยู่ในโค้ด) */
-(function(){var m=/^#(kosie|rab)=([0-9a-f]{16,64})$/.exec(location.hash||"");if(!m)return;if(m[1]==="kosie")ls("my_kosie",UB+"?p=kosie&k="+m[2]);else ls("my_rab",UB+"?p=unit&u=MIX&k="+m[2]);try{history.replaceState(null,"",location.pathname);}catch(e){location.hash="";}})();   /* #rab= = ลิงก์ตั้งค่า รับงานใบส้ม (8 พ.ย. 69) */
+(function(){var m=/^#(kosie|rab|dup)=([0-9a-f]{16,64})$/.exec(location.hash||"");if(!m)return;if(m[1]==="kosie")ls("my_kosie",UB+"?p=kosie&k="+m[2]);else if(m[1]==="dup")ls("my_dup",KS+"?p=dupscan&dk="+m[2]);else ls("my_rab",UB+"?p=unit&u=MIX&k="+m[2]);try{history.replaceState(null,"",location.pathname);}catch(e){location.hash="";}})();   /* #rab= = ลิงก์ตั้งค่า รับงานใบส้ม (8 พ.ย. 69) */
 $("q").addEventListener("input",function(){draw(this.value);});
 (function(){var h=new Date().getHours();$("greet").textContent=h<12?"อรุณสวัสดิ์ค่ะพี่ฝน ☀︎":h<17?"สวัสดีตอนบ่ายค่ะพี่ฝน ✿":"เย็นแล้วน้าพี่ฝน ☾";})();
 draw("");drawRecent();
